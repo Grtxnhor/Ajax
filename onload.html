@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajax</title>
+</head>
+<body>
+
+	<button id="data">Send</button>
+	<li id="hi" style="cursor: pointer;"><a>We</a></li>
+
+	<script type="text/javascript">
+		
+		document.getElementById('hi').addEventListener('click', myfun);
+
+		function myfun()
+		{
+			var xhr = new  XMLHttpRequest();
+			xhr.open('GET', './onredy', true);
+
+			xhr.onload = function ()
+			{
+				if (xhr.status == 200) {
+					document.write(this.responseText);
+					//document.getElementById('display').innerHTML=xhr.responseText;
+				} else {
+
+					xhr.open('GET', './onready', true);
+					xhr.send();
+				}
+			}
+
+			xhr.send();
+		}
+		function hey() {
+			document.getElementById("hi").style.color = "blue";
+		}
+		function he() {
+			document.getElementById("hi").style.color = "black";
+		}
+	</script>
+
+</body>
+</html>

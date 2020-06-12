@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>On Ready</title>
+</head>
+<body>
+	<button id="data">Send</button>
+	<div id="display"></div>
+
+		<script type="text/javascript">
+		
+		document.getElementById('data').addEventListener('click', myfun);
+
+		function myfun()
+		{
+			var xhr = new  XMLHttpRequest();
+			xhr.open('GET', 'demo.txt', true);
+
+ 			xhr.onreadystatechange = function() 
+ 			{
+ 				if(xhr.onreadystate == 4 && xhr.status == 200) 
+ 				{
+ 					document.getElementById('display').innerHTML=xhr.responseText;
+ 				}
+ 			}
+
+			xhr.send();
+		}
+	</script>
+
+</body>
+</html>
+
+<!---
+	0: request not initialised
+	1: server connection is established
+	2: request is received
+	3: processing request
+	4: request finished and response is ready
+	-->
